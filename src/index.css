@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('./assets/Ubuntu-Regular.ttf') format('truetype'),
+        url('./assets/Ubuntu-Medium.ttf') format('truetype'),
+        url('./assets/Ubuntu-Bold.ttf') format('truetype');
+    font-weight: 400, 500, 700;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Primary  */
+        --Marine-blue: 213 96% 18%;
+        --Purplish-blue: 243 100% 62%;
+        --Pastel-blue: 228 100% 84%;
+        --Light-blue: 206 94% 87%;
+        --Strawberry-red: 354 84% 57%;
+
+        /* Neutral */
+        --Cool-gray: 231 11% 63%;
+        --Light-gray: 229 24% 87%;
+        --Magnolia: 217 100% 97%;
+        --Alabaster: 231 100% 99%;
+        --White: 0 0% 100%;
+    }
+}

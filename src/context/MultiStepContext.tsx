@@ -14,11 +14,16 @@ const MultiStepContextProvider = ({ children }: Props) => {
     const [step, setStep] = useState(0);
 
     const increaseStep = () => {
-        setStep((step) => step + 1);
-    };
+        // Handle step change on successfully submitted step
+        setStep((step) => (step + 1 > 3 ? 3 : step + 1));
 
+        // Handle step change on go-back click
+    };
     const decreaseStep = () => {
-        setStep((step) => step - 1);
+        // Handle step change on successfully submitted step
+        setStep((step) => (step - 1 < 0 ? 0 : step - 1));
+
+        // Handle step change on go-back click
     };
 
     return (
@@ -38,7 +43,7 @@ const useMultiStep = () => {
     const context = useContext(MultiStepContext);
     if (context === null)
         throw new Error(
-            'MultiStepContext was used outside MultiStepContextProvider'
+            'MultiStepContext was used outside MultiStepContextProvider',
         );
     return context;
 };

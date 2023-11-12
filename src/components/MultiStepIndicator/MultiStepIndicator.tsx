@@ -1,4 +1,4 @@
-import { useMultiStep } from '../context/MultiStepContext';
+import { useMultiStep } from '../../context/MultiStepContext';
 
 const baseClasses = 'px-3 py-1 border rounded-full';
 const activeClass = 'bg-primary-light-blue';

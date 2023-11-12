@@ -9,7 +9,7 @@ import FormSectionHeader from './FormSectionHeader';
 const stepOneBaseStyles =
     'rounded-[.25rem] border border-l-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue';
 
-const errorOutlineStyle = 'focus:outline-primary-strawberry-red';
+const stepOneErrorOutlineStyle = 'focus:outline-primary-strawberry-red';
 
 interface Inputs {
     name: string;
@@ -63,7 +63,7 @@ const MultiStepForm = () => {
                             required: 'This field is required',
                         })}
                         className={`${stepOneBaseStyles} ${
-                            nameError ? errorOutlineStyle : ''
+                            nameError ? stepOneErrorOutlineStyle : ''
                         }`}
                         type="text"
                         name="name"
@@ -85,7 +85,7 @@ const MultiStepForm = () => {
                             },
                         })}
                         className={`${stepOneBaseStyles} ${
-                            emailError ? errorOutlineStyle : ''
+                            emailError ? stepOneErrorOutlineStyle : ''
                         } `}
                         type="email"
                         name="email"
@@ -108,7 +108,7 @@ const MultiStepForm = () => {
                             },
                         })}
                         className={`${stepOneBaseStyles} ${
-                            phoneError ? errorOutlineStyle : ''
+                            phoneError ? stepOneErrorOutlineStyle : ''
                         }`}
                         type="text"
                         name="phone"

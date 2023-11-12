@@ -10,7 +10,9 @@ const FormRow = ({ label, htmlFor, error, children }: Props) => {
         <div className="text-primary-marine-blue">
             <label htmlFor={htmlFor}>{label}</label>
             {children}
-            {error && <p className="text-primary-strawberry-red">{error}</p>}
+            {error && (
+                <p className="font-bold text-primary-strawberry-red">{error}</p>
+            )}
         </div>
     );
 };

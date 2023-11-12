@@ -9,6 +9,8 @@ import FormSectionHeader from './FormSectionHeader';
 const stepOneBaseStyles =
     'rounded-[.25rem] border border-l-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue';
 
+const errorOutlineStyle = 'focus:outline-primary-strawberry-red';
+
 interface Inputs {
     name: string;
     email: string;
@@ -24,6 +26,8 @@ const MultiStepForm = () => {
         handleSubmit,
         reset,
     } = useForm<Inputs>();
+
+    const { email: emailError, phone: phoneError, name: nameError } = errors;
 
     const onSubmit: SubmitHandler<Inputs> = () => {
         console.log('Form submitted');
@@ -50,7 +54,7 @@ const MultiStepForm = () => {
                 </FormSectionHeader>
 
                 <FormRow
-                    label="Name"
+                    label="Name *"
                     htmlFor="name"
                     error={errors.name ? errors.name.message : ''}
                 >
@@ -58,7 +62,9 @@ const MultiStepForm = () => {
                         {...register('name', {
                             required: 'This field is required',
                         })}
-                        className={stepOneBaseStyles}
+                        className={`${stepOneBaseStyles} ${
+                            nameError ? errorOutlineStyle : ''
+                        }`}
                         type="text"
                         name="name"
                         id="name"
@@ -66,7 +72,7 @@ const MultiStepForm = () => {
                     />
                 </FormRow>
                 <FormRow
-                    label="Email Address"
+                    label="Email Address *"
                     htmlFor="email"
                     error={errors.email ? errors.email.message : ''}
                 >
@@ -78,7 +84,9 @@ const MultiStepForm = () => {
                                 message: 'Please provide a valid email address',
                             },
                         })}
-                        className={stepOneBaseStyles}
+                        className={`${stepOneBaseStyles} ${
+                            emailError ? errorOutlineStyle : ''
+                        } `}
                         type="email"
                         name="email"
                         id="email"
@@ -86,7 +94,7 @@ const MultiStepForm = () => {
                     />
                 </FormRow>
                 <FormRow
-                    label="Phone Number"
+                    label="Phone Number *"
                     htmlFor="phone"
                     error={errors.phone ? errors.phone.message : ''}
                 >
@@ -99,7 +107,9 @@ const MultiStepForm = () => {
                                 message: 'Please provide a valid phone number',
                             },
                         })}
-                        className={stepOneBaseStyles}
+                        className={`${stepOneBaseStyles} ${
+                            phoneError ? errorOutlineStyle : ''
+                        }`}
                         type="text"
                         name="phone"
                         id="phone"

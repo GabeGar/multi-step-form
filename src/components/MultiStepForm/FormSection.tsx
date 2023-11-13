@@ -1,4 +1,5 @@
 import { useMultiStep } from '../../context/MultiStepContext';
+import { motion as m } from 'framer-motion';
 
 interface Props {
     formStep: number;
@@ -12,7 +13,20 @@ const FormSection = ({ formStep, classes, children }: Props) => {
     const formStepActual = formStep - 1;
     if (formStepActual !== currentStep) return;
 
-    return <section className={classes}>{children}</section>;
+    return (
+        <m.section
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+                type: 'tween',
+                duration: 0.3,
+                delay: 0.1,
+            }}
+            className={classes}
+        >
+            {children}
+        </m.section>
+    );
 };
 
 export default FormSection;

@@ -1,3 +1,4 @@
+import { motion as m } from 'framer-motion';
 import { useMultiStep } from '../../context/MultiStepContext';
 import { STEPS } from '../../shared/constants';
 
@@ -14,20 +15,36 @@ const MultiStepIndicator = () => {
 
     return (
         <section className="mt-10 flex gap-3">
-            {Array.from({ length: STEPS.FOUR }).map((_, i) => {
-                return (
-                    <div
-                        key={i}
-                        className={
+            {Array.from({ length: STEPS.FOUR }).map((_, i) => (
+                <m.div
+                    key={i}
+                    initial={{
+                        opacity: 0,
+                        backgroundColor: 'hsla(206, 94%, 87%, 0)',
+                    }}
+                    animate={{
+                        opacity: 1,
+                        backgroundColor:
                             step === i
-                                ? `${stepIndicatorState.active}`
-                                : `${stepIndicatorState.inactive}`
-                        }
-                    >
-                        {i + 1}
-                    </div>
-                );
-            })}
+                                ? 'hsla(206, 94%, 87%, 1)'
+                                : 'hsla(206, 94%, 87%, 0)',
+                    }}
+                    exit={{
+                        opacity: 0,
+                        backgroundColor: 'hsla(206, 94%, 87%, 0)',
+                    }}
+                    transition={{
+                        duration: 0.4,
+                    }}
+                    className={
+                        step === i
+                            ? `${stepIndicatorState.active}`
+                            : `${stepIndicatorState.inactive}`
+                    }
+                >
+                    {i + 1}
+                </m.div>
+            ))}
         </section>
     );
 };

@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { AnimatePresence } from 'framer-motion';
 
 import { useMultiStep } from '../../context/MultiStepContext';
 import { STEPS } from '../../shared/constants';
@@ -66,7 +67,11 @@ const MultiStepForm = () => {
 
     return (
         <Form onSubmit={(e) => void handleSubmit(onSubmit)(e)} id="multiStep">
-            <FormSection classes="space-y-4" formStep={STEPS.ONE}>
+            <FormSection
+                key={STEPS.ONE}
+                classes="space-y-4"
+                formStep={STEPS.ONE}
+            >
                 <FormSectionHeader>
                     <h2 className="text-2xl font-bold text-primary-marine-blue">
                         Personal info
@@ -93,6 +98,7 @@ const MultiStepForm = () => {
                         name="name"
                         id="name"
                         placeholder="e.g. Stephen King"
+                        autoComplete="name"
                     />
                 </StepOneRow>
                 <StepOneRow
@@ -114,6 +120,7 @@ const MultiStepForm = () => {
                         type="email"
                         name="email"
                         id="email"
+                        autoComplete="email"
                         placeholder="e.g. stephenking@lorem.com"
                     />
                 </StepOneRow>
@@ -137,12 +144,17 @@ const MultiStepForm = () => {
                         type="text"
                         name="phone"
                         id="phone"
+                        autoComplete="phone"
                         placeholder="e.g. +1 234 567 890"
                     />
                 </StepOneRow>
             </FormSection>
 
-            <FormSection classes="space-y-3" formStep={STEPS.TWO}>
+            <FormSection
+                key={STEPS.TWO}
+                classes="space-y-3"
+                formStep={STEPS.TWO}
+            >
                 <FormSectionHeader>
                     <h2 className="text-2xl font-bold text-primary-marine-blue">
                         Select your plan
@@ -246,7 +258,7 @@ const MultiStepForm = () => {
                         <input
                             {...register('yearly')}
                             className="peer sr-only"
-                            name=""
+                            name="toggle"
                             type="checkbox"
                             onChange={onToggleYearly}
                         />

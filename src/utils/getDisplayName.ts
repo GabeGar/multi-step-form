@@ -6,7 +6,8 @@ export const getDisplayName = (key: string): string => {
         .replace(/([a-z])([A-Z])/g, '$1 $2') // Insert space between camelCase
         .toLowerCase()
         .split(' ')
-        .map((word) => capitalize(word));
+        .map((word) => capitalize(word))
+        .join(' ');
 
-    return words.join(' ');
+    return words;
 };

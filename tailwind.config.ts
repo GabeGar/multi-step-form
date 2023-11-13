@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
+import tailwindFormsPlugin from '@tailwindcss/forms';
 
 export default {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -31,5 +32,9 @@ export default {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        tailwindFormsPlugin({
+            strategy: 'class',
+        }),
+    ],
 } satisfies Config;

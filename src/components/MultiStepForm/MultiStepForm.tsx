@@ -17,26 +17,27 @@ const stepOneBaseInputStyles =
 
 const stepOneInputErrorOutlineStyle = 'focus:outline-primary-strawberry-red';
 
+const stepThreeBaseInputStyles =
+    'form-checkbox self-center text-primary-purplish-blue focus:ring-0 h-5 w-5 rounded-md';
+
 interface Inputs {
     name: string;
     email: string;
     phone: string;
     plan: string;
     yearly: boolean;
+    onlineService: boolean;
+    largeStorage: boolean;
+    customizableProfile: boolean;
 }
+
+type ChangeEventInputElement = React.ChangeEvent<HTMLInputElement>;
 
 const MultiStepForm = () => {
     const { step, increaseStep } = useMultiStep();
 
-    const {
-        register,
-        formState,
-        getValues,
-        handleSubmit,
-        reset,
-        setValue,
-        watch,
-    } = useForm<Inputs>();
+    const { register, formState, handleSubmit, reset, setValue, watch } =
+        useForm<Inputs>();
 
     const {
         email: emailError,
@@ -46,13 +47,23 @@ const MultiStepForm = () => {
 
     const selectedPlan = watch('plan');
     const isToggledYearly = watch('yearly', false);
+    const wantsOnlineService = watch('onlineService', false);
+    const wantsLargeStorage = watch('largeStorage', false);
+    const wantsCustomizableProfile = watch('customizableProfile', false);
 
-    const onChangePlan = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue('plan', e.target.value, { shouldDirty: true });
+    const onChangePlan = (e: ChangeEventInputElement) => {
+        setValue('plan', e.target.value);
     };
 
-    const onToggleYearly = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue('yearly', e.target.checked, { shouldDirty: true });
+    const onToggleYearly = (e: ChangeEventInputElement) => {
+        setValue('yearly', e.target.checked);
+    };
+
+    const onChangeAddons = (
+        e: ChangeEventInputElement,
+        checkBoxName: keyof Inputs,
+    ) => {
+        setValue(checkBoxName, e.target.checked);
     };
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -280,12 +291,16 @@ const MultiStepForm = () => {
                     title="Pick add-ons"
                     description="Add-ons help enhance your gaming experience."
                 />
-                <StepThreeRow>
+                <StepThreeRow isAddOnSelected={wantsOnlineService}>
                     <input
-                        className="text-primary-purplish-blue"
+                        {...register('onlineService')}
+                        className={stepThreeBaseInputStyles}
                         type="checkbox"
-                        id="Large storage"
-                        name="Large storage"
+                        id="Online service"
+                        name="onlineService"
+                        onChange={(e) => {
+                            onChangeAddons(e, 'onlineService');
+                        }}
                     />
                     <AddOnsPara
                         isToggledYearly={isToggledYearly}
@@ -294,11 +309,16 @@ const MultiStepForm = () => {
                         description="Access to multiplayer games"
                     />
                 </StepThreeRow>
-                <StepThreeRow>
+                <StepThreeRow isAddOnSelected={wantsLargeStorage}>
                     <input
+                        {...register('largeStorage')}
+                        className={stepThreeBaseInputStyles}
                         type="checkbox"
                         id="Large storage"
-                        name="Large storage"
+                        name="largeStorage"
+                        onChange={(e) => {
+                            onChangeAddons(e, 'largeStorage');
+                        }}
                     />
                     <AddOnsPara
                         isToggledYearly={isToggledYearly}
@@ -307,11 +327,16 @@ const MultiStepForm = () => {
                         description="Extra 1TB of cloud save"
                     />
                 </StepThreeRow>
-                <StepThreeRow>
+                <StepThreeRow isAddOnSelected={wantsCustomizableProfile}>
                     <input
+                        {...register('customizableProfile')}
+                        className={stepThreeBaseInputStyles}
                         type="checkbox"
                         id="Customizable profile"
-                        name="Customizable profile"
+                        name="customizableProfile"
+                        onChange={(e) => {
+                            onChangeAddons(e, 'customizableProfile');
+                        }}
                     />
                     <AddOnsPara
                         isToggledYearly={isToggledYearly}

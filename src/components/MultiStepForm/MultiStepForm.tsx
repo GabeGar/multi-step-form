@@ -1,5 +1,4 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { AnimatePresence } from 'framer-motion';
 
 import { useMultiStep } from '../../context/MultiStepContext';
 import { STEPS } from '../../shared/constants';
@@ -26,6 +25,7 @@ interface Inputs {
 
 const MultiStepForm = () => {
     const { step, increaseStep } = useMultiStep();
+
     const {
         register,
         formState,

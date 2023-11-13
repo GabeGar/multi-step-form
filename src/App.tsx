@@ -1,6 +1,6 @@
 import MultiStepIndicator from './components/MultiStepIndicator/MultiStepIndicator';
 import MultiStepForm from './components/MultiStepForm/MultiStepForm';
-import MultiStepFormActions from './components/MultiStepForm/MultiStepFormActions';
+import MultiStepFormActions from './components/MultiStepFormActions/MultiStepFormActions';
 import { AnimatePresence } from 'framer-motion';
 
 const App = () => {

@@ -5,10 +5,12 @@ const classes = 'mt-auto rounded-md p-3 text-neutral-alabaster font-semibold';
 
 const MultiStepFormActions = () => {
     const { step, decreaseStep } = useMultiStep();
+    const firstStep = STEPS.ONE - 1;
+    const finalStep = STEPS.FOUR - 1;
 
     return (
         <div className="mt-auto flex w-full bg-neutral-white px-5 py-3">
-            {step !== STEPS.ONE - 1 && (
+            {step !== firstStep && (
                 <button
                     className={`${classes} text-neutral-cool-gray`}
                     onClick={decreaseStep}
@@ -21,7 +23,7 @@ const MultiStepFormActions = () => {
                 form="multiStep"
                 className={`${classes} ml-auto bg-primary-marine-blue`}
             >
-                {step === STEPS.FOUR - 1 ? 'Submit' : 'Next Step'}
+                {step === finalStep ? 'Submit' : 'Next Step'}
             </button>
         </div>
     );

@@ -1,19 +1,24 @@
+import { addOns } from '../../../shared/constants';
+import { AddOns } from '../../../shared/types';
+
 interface Props {
     isToggledYearly: boolean;
     htmlFor: string;
     description: string;
-    priceMonthly: string;
+    addOn: keyof AddOns;
 }
 
 const AddOnsPara = ({
     isToggledYearly,
     htmlFor,
     description,
-    priceMonthly,
+    addOn,
 }: Props) => {
-    const priceYearly = String(Number(priceMonthly) * 10);
-    const timeSpan = isToggledYearly ? 'yr' : 'mo';
-    const actualPrice = isToggledYearly ? priceYearly : priceMonthly;
+    const currentAddOn = addOns[addOn];
+    const { monthly: priceMonthly, yearly: priceYearly } = currentAddOn;
+
+    const currentPrice = isToggledYearly ? priceYearly : priceMonthly;
+    const currentTimeSpan = isToggledYearly ? 'yr' : 'mo';
 
     return (
         <div className="flex flex-1 items-center">
@@ -29,7 +34,7 @@ const AddOnsPara = ({
                 </p>
             </div>
             <p className="text-sm text-primary-purplish-blue">
-                +${actualPrice}/{timeSpan}
+                +${currentPrice}/{currentTimeSpan}
             </p>
         </div>
     );

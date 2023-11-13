@@ -182,7 +182,7 @@ const MultiStepForm = () => {
                     </label>
                     <PriceTierPara
                         isToggledYearly={isToggledYearly}
-                        priceMonthly="9"
+                        plan="arcade"
                     />
                     <input
                         {...register('plan')}
@@ -210,7 +210,7 @@ const MultiStepForm = () => {
                     </label>
                     <PriceTierPara
                         isToggledYearly={isToggledYearly}
-                        priceMonthly="12"
+                        plan="advanced"
                     />
                     <input
                         {...register('plan')}
@@ -237,7 +237,7 @@ const MultiStepForm = () => {
                     </label>
                     <PriceTierPara
                         isToggledYearly={isToggledYearly}
-                        priceMonthly="15"
+                        plan="pro"
                     />
                     <input
                         {...register('plan')}
@@ -305,7 +305,7 @@ const MultiStepForm = () => {
                     <AddOnsPara
                         isToggledYearly={isToggledYearly}
                         htmlFor="Online service"
-                        priceMonthly="1"
+                        addOn="onlineService"
                         description="Access to multiplayer games"
                     />
                 </StepThreeRow>
@@ -323,7 +323,7 @@ const MultiStepForm = () => {
                     <AddOnsPara
                         isToggledYearly={isToggledYearly}
                         htmlFor="Large storage"
-                        priceMonthly="2"
+                        addOn="largeStorage"
                         description="Extra 1TB of cloud save"
                     />
                 </StepThreeRow>
@@ -341,7 +341,7 @@ const MultiStepForm = () => {
                     <AddOnsPara
                         isToggledYearly={isToggledYearly}
                         htmlFor="Customizable profile"
-                        priceMonthly="2"
+                        addOn="customizableProfile"
                         description="Custom theme on your profile"
                     />
                 </StepThreeRow>

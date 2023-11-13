@@ -36,3 +36,16 @@ export const addOns: AddOns = {
         yearly: 20,
     },
 };
+
+export const timeSpanText = {
+    month: {
+        short: 'mo',
+        full: 'month',
+        fullCapitalized: 'Monthly',
+    },
+    yearly: {
+        short: 'yr',
+        full: 'year',
+        fullCapitalized: 'Yearly',
+    },
+};

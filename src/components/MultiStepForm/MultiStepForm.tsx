@@ -2,6 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useMultiStep } from '../../context/MultiStepContext';
 import { STEPS } from '../../shared/constants';
+import { Inputs } from '../../shared/types';
 import Form from './Form';
 import StepOneRow from './StepOne/StepOneRow';
 import FormSection from './FormSection';
@@ -11,6 +12,7 @@ import ToggleSwitch from './StepTwo/ToggleSwitch';
 import PriceTierPara from './StepTwo/PriceTierPara';
 import StepThreeRow from './StepThree/StepThreeRow';
 import AddOnsPara from './StepThree/AddOnsPara';
+import Summary from './StepFour/Summary';
 
 const stepOneBaseInputStyles =
     'rounded-[.25rem] border border-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue';
@@ -20,24 +22,20 @@ const stepOneInputErrorOutlineStyle = 'focus:outline-primary-strawberry-red';
 const stepThreeBaseInputStyles =
     'form-checkbox self-center text-primary-purplish-blue focus:ring-0 h-5 w-5 rounded-md';
 
-interface Inputs {
-    name: string;
-    email: string;
-    phone: string;
-    plan: string;
-    yearly: boolean;
-    onlineService: boolean;
-    largeStorage: boolean;
-    customizableProfile: boolean;
-}
-
 type ChangeEventInputElement = React.ChangeEvent<HTMLInputElement>;
 
 const MultiStepForm = () => {
     const { step, increaseStep } = useMultiStep();
 
-    const { register, formState, handleSubmit, reset, setValue, watch } =
-        useForm<Inputs>();
+    const {
+        register,
+        formState,
+        getValues,
+        handleSubmit,
+        reset,
+        setValue,
+        watch,
+    } = useForm<Inputs>();
 
     const {
         email: emailError,
@@ -345,6 +343,24 @@ const MultiStepForm = () => {
                         description="Custom theme on your profile"
                     />
                 </StepThreeRow>
+            </FormSection>
+
+            <FormSection
+                key={STEPS.FOUR}
+                classes="space-y-3"
+                formStep={STEPS.FOUR}
+            >
+                <FormSectionHeader
+                    title="Finishing up"
+                    description="Double-check everything looks OK before confirming."
+                />
+                <Summary
+                    selectedPlan={selectedPlan}
+                    isToggledYearly={isToggledYearly}
+                    wantsOnlineService={wantsOnlineService}
+                    wantsLargeStorage={wantsLargeStorage}
+                    wantsCustomizableProfile={wantsCustomizableProfile}
+                />
             </FormSection>
         </Form>
     );

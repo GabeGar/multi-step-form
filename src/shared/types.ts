@@ -1,3 +1,14 @@
+export interface Inputs {
+    name: string;
+    email: string;
+    phone: string;
+    plan: string;
+    yearly: boolean;
+    onlineService: boolean;
+    largeStorage: boolean;
+    customizableProfile: boolean;
+}
+
 export interface Plans {
     arcade: {
         monthly: number;

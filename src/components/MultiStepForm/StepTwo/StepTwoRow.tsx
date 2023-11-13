@@ -5,10 +5,18 @@ interface Props {
     imageSrc: string;
     alt: string;
     selectedPlan: string;
+    isToggledYearly: boolean;
     children: React.ReactNode;
 }
 
-const StepTwoRow = ({ id, selectedPlan, imageSrc, alt, children }: Props) => {
+const StepTwoRow = ({
+    id,
+    isToggledYearly,
+    selectedPlan,
+    imageSrc,
+    alt,
+    children,
+}: Props) => {
     const isSelected = id === selectedPlan;
 
     return (
@@ -20,7 +28,13 @@ const StepTwoRow = ({ id, selectedPlan, imageSrc, alt, children }: Props) => {
                         : 'border-neutral-light-gray'
                 }`}
             >
-                {imageSrc && <img src={imageSrc} alt={alt} />}
+                {imageSrc && (
+                    <img
+                        className={isToggledYearly ? 'self-start' : ''}
+                        src={imageSrc}
+                        alt={alt}
+                    />
+                )}
                 <div>{children}</div>
             </div>
         </>

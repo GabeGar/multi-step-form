@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useMultiStep } from '../../context/MultiStepContext';
 import { STEPS } from '../../shared/constants';
-import { Inputs } from '../../shared/types';
+import { Inputs, Plans } from '../../shared/types';
 import Form from './Form';
 import StepOneRow from './StepOne/StepOneRow';
 import FormSection from './FormSection';
@@ -43,7 +43,7 @@ const MultiStepForm = () => {
         name: nameError,
     } = formState.errors;
 
-    const selectedPlan = watch('plan');
+    const selectedPlan = watch('plan') as keyof Plans;
     const isToggledYearly = watch('yearly', false);
     const wantsOnlineService = watch('onlineService', false);
     const wantsLargeStorage = watch('largeStorage', false);

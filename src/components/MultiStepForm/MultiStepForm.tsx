@@ -9,6 +9,8 @@ import FormSectionHeader from './FormSectionHeader';
 import StepTwoRow from './StepTwo/StepTwoRow';
 import ToggleSwitch from './StepTwo/ToggleSwitch';
 import PriceTierPara from './StepTwo/PriceTierPara';
+import StepThreeRow from './StepThree/StepThreeRow';
+import AddOnsPara from './StepThree/AddOnsPara';
 
 const stepOneBaseInputStyles =
     'rounded-[.25rem] border border-l-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue';
@@ -72,16 +74,11 @@ const MultiStepForm = () => {
                 classes="space-y-4"
                 formStep={STEPS.ONE}
             >
-                <FormSectionHeader>
-                    <h2 className="text-2xl font-bold text-primary-marine-blue">
-                        Personal info
-                    </h2>
-                    <p className="text-neutral-cool-gray">
-                        Please provide your name, email address, and phone
-                        number.
-                    </p>
-                </FormSectionHeader>
-
+                <FormSectionHeader
+                    title="Personal info"
+                    description="Please provide your name, email address, and phone
+                        number."
+                />
                 <StepOneRow
                     label="Name *"
                     htmlFor="name"
@@ -155,16 +152,12 @@ const MultiStepForm = () => {
                 classes="space-y-3"
                 formStep={STEPS.TWO}
             >
-                <FormSectionHeader>
-                    <h2 className="text-2xl font-bold text-primary-marine-blue">
-                        Select your plan
-                    </h2>
-                    <p className="text-neutral-cool-gray">
-                        You have the option of monthly or yearly billing.
-                    </p>
-                </FormSectionHeader>
-
+                <FormSectionHeader
+                    title="Select your plan"
+                    description="You have the option of monthly or yearly billing."
+                />
                 <StepTwoRow
+                    isToggledYearly={isToggledYearly}
                     selectedPlan={selectedPlan}
                     imageSrc="/icon-arcade.svg"
                     alt="Arcade plan icon"
@@ -192,6 +185,7 @@ const MultiStepForm = () => {
                     />
                 </StepTwoRow>
                 <StepTwoRow
+                    isToggledYearly={isToggledYearly}
                     selectedPlan={selectedPlan}
                     imageSrc="/icon-advanced.svg"
                     alt="Advanced plan icon"
@@ -218,6 +212,7 @@ const MultiStepForm = () => {
                     />
                 </StepTwoRow>
                 <StepTwoRow
+                    isToggledYearly={isToggledYearly}
                     selectedPlan={selectedPlan}
                     imageSrc="/icon-pro.svg"
                     alt="Prop plan icon"
@@ -274,6 +269,57 @@ const MultiStepForm = () => {
                         Yearly
                     </span>
                 </ToggleSwitch>
+            </FormSection>
+
+            <FormSection
+                key={STEPS.THREE}
+                classes="space-y-3"
+                formStep={STEPS.THREE}
+            >
+                <FormSectionHeader
+                    title="Pick add-ons"
+                    description="Add-ons help enhance your gaming experience."
+                />
+                <StepThreeRow>
+                    <input
+                        className="text-primary-purplish-blue"
+                        type="checkbox"
+                        id="Large storage"
+                        name="Large storage"
+                    />
+                    <AddOnsPara
+                        isToggledYearly={isToggledYearly}
+                        htmlFor="Online service"
+                        priceMonthly="1"
+                        description="Access to multiplayer games"
+                    />
+                </StepThreeRow>
+                <StepThreeRow>
+                    <input
+                        type="checkbox"
+                        id="Large storage"
+                        name="Large storage"
+                    />
+                    <AddOnsPara
+                        isToggledYearly={isToggledYearly}
+                        htmlFor="Large storage"
+                        priceMonthly="2"
+                        description="Extra 1TB of cloud save"
+                    />
+                </StepThreeRow>
+                <StepThreeRow>
+                    <input
+                        type="checkbox"
+                        id="Customizable profile"
+                        name="Customizable profile"
+                    />
+                    <AddOnsPara
+                        isToggledYearly={isToggledYearly}
+                        htmlFor="Customizable profile"
+                        priceMonthly="2"
+                        description="Custom theme on your profile"
+                    />
+                </StepThreeRow>
             </FormSection>
         </Form>
     );

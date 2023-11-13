@@ -13,7 +13,7 @@ import StepThreeRow from './StepThree/StepThreeRow';
 import AddOnsPara from './StepThree/AddOnsPara';
 
 const stepOneBaseInputStyles =
-    'rounded-[.25rem] border border-l-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue';
+    'rounded-[.25rem] border border-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue';
 
 const stepOneInputErrorOutlineStyle = 'focus:outline-primary-strawberry-red';
 

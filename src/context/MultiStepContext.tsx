@@ -14,16 +14,10 @@ const MultiStepContextProvider = ({ children }: Props) => {
     const [step, setStep] = useState(0);
 
     const increaseStep = () => {
-        // Handle step change on successfully submitted step
         setStep((step) => (step + 1 > 3 ? 3 : step + 1));
-
-        // Handle step change on go-back click
     };
     const decreaseStep = () => {
-        // Handle step change on successfully submitted step
         setStep((step) => (step - 1 < 0 ? 0 : step - 1));
-
-        // Handle step change on go-back click
     };
 
     return (

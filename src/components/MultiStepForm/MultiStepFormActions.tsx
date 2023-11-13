@@ -1,4 +1,5 @@
 import { useMultiStep } from '../../context/MultiStepContext';
+import { STEPS } from '../../shared/constants';
 
 const classes = 'mt-auto rounded-md p-3 text-neutral-alabaster font-semibold';
 
@@ -7,7 +8,7 @@ const MultiStepFormActions = () => {
 
     return (
         <div className="mt-auto flex w-full bg-neutral-white px-5 py-3">
-            {step !== 0 && (
+            {step !== STEPS.ONE - 1 && (
                 <button
                     className={`${classes} text-neutral-cool-gray`}
                     onClick={decreaseStep}
@@ -20,7 +21,7 @@ const MultiStepFormActions = () => {
                 form="multiStep"
                 className={`${classes} ml-auto bg-primary-marine-blue`}
             >
-                {step === 3 ? 'Submit' : 'Next Step'}
+                {step === STEPS.FOUR - 1 ? 'Submit' : 'Next Step'}
             </button>
         </div>
     );

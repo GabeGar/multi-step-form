@@ -7,10 +7,10 @@ interface Props {
 }
 
 const FormSection = ({ formStep, classes, children }: Props) => {
-    const { step } = useMultiStep();
+    const { step: currentStep } = useMultiStep();
 
-    const actualStep = formStep - 1;
-    if (actualStep !== step) return;
+    const formStepActual = formStep - 1;
+    if (formStepActual !== currentStep) return;
 
     return <section className={classes}>{children}</section>;
 };

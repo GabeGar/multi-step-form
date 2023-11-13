@@ -5,7 +5,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const FormRow = ({ label, htmlFor, error, children }: Props) => {
+const StepOneRow = ({ label, htmlFor, error, children }: Props) => {
     return (
         <div className="text-primary-marine-blue">
             <label htmlFor={htmlFor}>{label}</label>
@@ -17,4 +17,4 @@ const FormRow = ({ label, htmlFor, error, children }: Props) => {
     );
 };
 
-export default FormRow;
+export default StepOneRow;

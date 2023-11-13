@@ -1,10 +1,10 @@
 const stepTwoBaseStyles = 'relative flex gap-3 rounded-lg border p-4';
 
 interface Props {
-    id?: string;
-    imageSrc?: string;
-    alt?: string;
-    selectedPlan?: string;
+    id: string;
+    imageSrc: string;
+    alt: string;
+    selectedPlan: string;
     children: React.ReactNode;
 }
 

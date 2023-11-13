@@ -1,22 +1,26 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useMultiStep } from '../../context/MultiStepContext';
+import { STEPS } from '../../shared/constants';
 import Form from './Form';
 import StepOneRow from './StepOne/StepOneRow';
 import FormSection from './FormSection';
 import FormSectionHeader from './FormSectionHeader';
 import StepTwoRow from './StepTwo/StepTwoRow';
+import ToggleSwitch from './StepTwo/ToggleSwitch';
+import PriceTierPara from './StepTwo/PriceTierPara';
 
-const stepOneBaseStyles =
+const stepOneBaseInputStyles =
     'rounded-[.25rem] border border-l-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue';
 
-const stepOneErrorOutlineStyle = 'focus:outline-primary-strawberry-red';
+const stepOneInputErrorOutlineStyle = 'focus:outline-primary-strawberry-red';
 
 interface Inputs {
     name: string;
     email: string;
     phone: string;
     plan: string;
+    yearly: boolean;
 }
 
 const MultiStepForm = () => {
@@ -38,9 +42,14 @@ const MultiStepForm = () => {
     } = formState.errors;
 
     const selectedPlan = watch('plan');
+    const isToggledYearly = watch('yearly', false);
 
     const onChangePlan = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue('plan', e.target.value, { shouldDirty: true });
+    };
+
+    const onToggleYearly = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue('yearly', e.target.checked, { shouldDirty: true });
     };
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -57,7 +66,7 @@ const MultiStepForm = () => {
 
     return (
         <Form onSubmit={(e) => void handleSubmit(onSubmit)(e)} id="multiStep">
-            <FormSection classes="space-y-4" formStep={1}>
+            <FormSection classes="space-y-4" formStep={STEPS.ONE}>
                 <FormSectionHeader>
                     <h2 className="text-2xl font-bold text-primary-marine-blue">
                         Personal info
@@ -77,8 +86,8 @@ const MultiStepForm = () => {
                         {...register('name', {
                             required: 'This field is required',
                         })}
-                        className={`${stepOneBaseStyles} ${
-                            nameError ? stepOneErrorOutlineStyle : ''
+                        className={`${stepOneBaseInputStyles} ${
+                            nameError ? stepOneInputErrorOutlineStyle : ''
                         }`}
                         type="text"
                         name="name"
@@ -99,8 +108,8 @@ const MultiStepForm = () => {
                                 message: 'Please provide a valid email address',
                             },
                         })}
-                        className={`${stepOneBaseStyles} ${
-                            emailError ? stepOneErrorOutlineStyle : ''
+                        className={`${stepOneBaseInputStyles} ${
+                            emailError ? stepOneInputErrorOutlineStyle : ''
                         } `}
                         type="email"
                         name="email"
@@ -122,8 +131,8 @@ const MultiStepForm = () => {
                                 message: 'Please provide a valid phone number',
                             },
                         })}
-                        className={`${stepOneBaseStyles} ${
-                            phoneError ? stepOneErrorOutlineStyle : ''
+                        className={`${stepOneBaseInputStyles} ${
+                            phoneError ? stepOneInputErrorOutlineStyle : ''
                         }`}
                         type="text"
                         name="phone"
@@ -133,7 +142,7 @@ const MultiStepForm = () => {
                 </StepOneRow>
             </FormSection>
 
-            <FormSection classes="space-y-3" formStep={2}>
+            <FormSection classes="space-y-3" formStep={STEPS.TWO}>
                 <FormSectionHeader>
                     <h2 className="text-2xl font-bold text-primary-marine-blue">
                         Select your plan
@@ -155,7 +164,10 @@ const MultiStepForm = () => {
                     >
                         Arcade
                     </label>
-                    <p className="text-neutral-cool-gray">$9/mo</p>
+                    <PriceTierPara
+                        isToggledYearly={isToggledYearly}
+                        priceMonthly="9"
+                    />
                     <input
                         {...register('plan')}
                         className=" absolute left-0 top-0 h-full w-full opacity-0 "
@@ -163,9 +175,7 @@ const MultiStepForm = () => {
                         name="plan"
                         id="arcade"
                         value="arcade"
-                        onChange={(e) => {
-                            onChangePlan(e);
-                        }}
+                        onChange={onChangePlan}
                         defaultChecked={!selectedPlan}
                     />
                 </StepTwoRow>
@@ -181,7 +191,10 @@ const MultiStepForm = () => {
                     >
                         Advanced
                     </label>
-                    <p className="text-neutral-cool-gray">$12/mo</p>
+                    <PriceTierPara
+                        isToggledYearly={isToggledYearly}
+                        priceMonthly="12"
+                    />
                     <input
                         {...register('plan')}
                         className="absolute left-0 top-0 h-full w-full opacity-0 "
@@ -189,9 +202,7 @@ const MultiStepForm = () => {
                         name="plan"
                         id="advanced"
                         value="advanced"
-                        onChange={(e) => {
-                            onChangePlan(e);
-                        }}
+                        onChange={onChangePlan}
                     />
                 </StepTwoRow>
                 <StepTwoRow
@@ -206,7 +217,10 @@ const MultiStepForm = () => {
                     >
                         Pro
                     </label>
-                    <p className="text-neutral-cool-gray">$15/mo</p>
+                    <PriceTierPara
+                        isToggledYearly={isToggledYearly}
+                        priceMonthly="15"
+                    />
                     <input
                         {...register('plan')}
                         className="absolute left-0 top-0 h-full w-full opacity-0 "
@@ -214,11 +228,40 @@ const MultiStepForm = () => {
                         name="plan"
                         id="pro"
                         value="pro"
-                        onChange={(e) => {
-                            onChangePlan(e);
-                        }}
+                        onChange={onChangePlan}
                     />
                 </StepTwoRow>
+                <ToggleSwitch>
+                    {/* https://flowbite.com/docs/forms/toggle/ */}
+                    <span
+                        className={`${
+                            !isToggledYearly
+                                ? 'text-primary-marine-blue'
+                                : 'text-neutral-cool-gray'
+                        } font-bold`}
+                    >
+                        Monthly
+                    </span>
+                    <label className="relative cursor-pointer self-center">
+                        <input
+                            {...register('yearly')}
+                            className="peer sr-only"
+                            name=""
+                            type="checkbox"
+                            onChange={onToggleYearly}
+                        />
+                        <div className="peer h-6 w-11 rounded-full bg-primary-marine-blue after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border  after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary-marine-blue peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full"></div>
+                    </label>
+                    <span
+                        className={`${
+                            isToggledYearly
+                                ? 'text-primary-marine-blue'
+                                : 'text-neutral-cool-gray'
+                        } font-bold`}
+                    >
+                        Yearly
+                    </span>
+                </ToggleSwitch>
             </FormSection>
         </Form>
     );

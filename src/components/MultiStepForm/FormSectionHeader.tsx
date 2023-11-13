@@ -1,9 +1,17 @@
 interface Props {
-    children: React.ReactNode;
+    title: string;
+    description: string;
 }
 
-const FormSectionHeader = ({ children }: Props) => {
-    return <div className="flex flex-col gap-2">{children}</div>;
+const FormSectionHeader = ({ title, description }: Props) => {
+    return (
+        <div className="flex flex-col gap-2">
+            <h2 className="text-2xl font-bold text-primary-marine-blue">
+                {title}
+            </h2>
+            <p className="text-neutral-cool-gray">{description}</p>
+        </div>
+    );
 };
 
 export default FormSectionHeader;

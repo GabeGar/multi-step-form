@@ -50,12 +50,12 @@ const MultiStepIndicator = () => {
                     {i + 1}
                     {isDesktop && (
                         <>
-                            <div className="absolute left-12 top-0">
-                                <h5 className="flex gap-1 text-[0.7rem] uppercase text-neutral-cool-gray">
+                            <div className="absolute left-12 top-0 text-[0.7rem]">
+                                <h5 className="flex gap-1 uppercase text-neutral-cool-gray">
                                     <span>Step</span>
                                     <span>{i + 1}</span>
                                 </h5>
-                                <p className="min-w-max text-sm font-bold uppercase tracking-widest text-neutral-alabaster">
+                                <p className="min-w-max font-bold uppercase tracking-widest text-neutral-alabaster">
                                     {stepDescriptions[i]}
                                 </p>
                             </div>

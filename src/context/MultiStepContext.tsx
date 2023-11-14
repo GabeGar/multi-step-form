@@ -6,12 +6,15 @@ interface Props {
 
 const MultiStepContext = createContext<{
     step: number;
+    complete: boolean;
     increaseStep: () => void;
     decreaseStep: () => void;
+    onComplete: () => void;
 } | null>(null);
 
 const MultiStepContextProvider = ({ children }: Props) => {
     const [step, setStep] = useState(0);
+    const [complete, setComplete] = useState(false);
 
     const increaseStep = () => {
         setStep((step) => (step + 1 > 3 ? 3 : step + 1));
@@ -20,12 +23,18 @@ const MultiStepContextProvider = ({ children }: Props) => {
         setStep((step) => (step - 1 < 0 ? 0 : step - 1));
     };
 
+    const onComplete = () => {
+        setComplete(true);
+    };
+
     return (
         <MultiStepContext.Provider
             value={{
                 step,
+                complete,
                 increaseStep,
                 decreaseStep,
+                onComplete,
             }}
         >
             {children}

@@ -8,12 +8,16 @@ const nextBtnClasses =
     'mt-auto rounded-md py-3 px-4 text-neutral-alabaster font-semibold';
 
 const MultiStepFormActions = () => {
-    const { step, decreaseStep } = useMultiStep();
+    const { step, decreaseStep, complete } = useMultiStep();
     const firstStep = step === STEPS.ONE - 1;
     const finalStep = step === STEPS.FOUR - 1;
 
     return (
-        <div className="mt-auto flex w-full bg-neutral-white px-5 py-3">
+        <div
+            className={`mt-auto flex w-full bg-neutral-white px-5 py-3 ${
+                complete ? 'pointer-events-none opacity-0' : ''
+            }`}
+        >
             {!firstStep && (
                 <button
                     className={`${prevBtnClasses} text-neutral-cool-gray`}

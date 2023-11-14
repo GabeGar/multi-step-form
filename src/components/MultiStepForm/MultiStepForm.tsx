@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useMultiStep } from '../../context/MultiStepContext';
+import { useMQuery } from '../../context/MediaQueryContext';
 import { STEPS } from '../../shared/constants';
 import { Inputs, Plans } from '../../shared/types';
 import Form from './Form';
@@ -9,13 +10,11 @@ import FormSection from './FormSection';
 import FormSectionHeader from './FormSectionHeader';
 import StepTwoRow from './StepTwo/StepTwoRow';
 import ToggleSwitch from './StepTwo/ToggleSwitch';
-import PriceTierPara from './StepTwo/PriceTierPara';
 import StepThreeRow from './StepThree/StepThreeRow';
 import AddOnsPara from './StepThree/AddOnsPara';
 import Summary from './StepFour/Summary';
 import Confirmation from '../ui/Confirmation';
 import MultiStepFormActions from '../MultiStepFormActions/MultiStepFormActions';
-import { useMQuery } from '../../context/MediaQueryContext';
 
 const stepOneBaseInputStyles =
     'rounded-[.25rem] border border-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue md:rounded-lg';

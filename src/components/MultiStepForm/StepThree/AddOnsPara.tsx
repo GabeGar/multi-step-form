@@ -4,15 +4,15 @@ import { AddOns } from '../../../shared/types';
 interface Props {
     isToggledYearly: boolean;
     htmlFor: string;
-    description: string;
     addOn: keyof AddOns;
+    description: string;
 }
 
 const AddOnsPara = ({
     isToggledYearly,
     htmlFor,
-    description,
     addOn,
+    description,
 }: Props) => {
     const currentAddOn = addOns[addOn];
     const { monthly: priceMonthly, yearly: priceYearly } = currentAddOn;

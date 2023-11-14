@@ -246,7 +246,13 @@ const MultiStepForm = () => {
                             title="Pick add-ons"
                             description="Add-ons help enhance your gaming experience."
                         />
-                        <StepThreeRow isAddOnSelected={wantsOnlineService}>
+                        <StepThreeRow
+                            isAddOnSelected={wantsOnlineService}
+                            isToggledYearly={isToggledYearly}
+                            htmlFor="Online service"
+                            addOn="onlineService"
+                            description="Access to multiplayer games"
+                        >
                             <input
                                 {...register('onlineService')}
                                 className={stepThreeBaseInputStyles}
@@ -257,14 +263,14 @@ const MultiStepForm = () => {
                                     onChangeAddons(e, 'onlineService');
                                 }}
                             />
-                            <AddOnsPara
-                                isToggledYearly={isToggledYearly}
-                                htmlFor="Online service"
-                                addOn="onlineService"
-                                description="Access to multiplayer games"
-                            />
                         </StepThreeRow>
-                        <StepThreeRow isAddOnSelected={wantsLargeStorage}>
+                        <StepThreeRow
+                            isToggledYearly={isToggledYearly}
+                            htmlFor="Large storage"
+                            addOn="largeStorage"
+                            description="Extra 1TB of cloud save"
+                            isAddOnSelected={wantsLargeStorage}
+                        >
                             <input
                                 {...register('largeStorage')}
                                 className={stepThreeBaseInputStyles}
@@ -275,15 +281,13 @@ const MultiStepForm = () => {
                                     onChangeAddons(e, 'largeStorage');
                                 }}
                             />
-                            <AddOnsPara
-                                isToggledYearly={isToggledYearly}
-                                htmlFor="Large storage"
-                                addOn="largeStorage"
-                                description="Extra 1TB of cloud save"
-                            />
                         </StepThreeRow>
                         <StepThreeRow
                             isAddOnSelected={wantsCustomizableProfile}
+                            isToggledYearly={isToggledYearly}
+                            htmlFor="Customizable profile"
+                            addOn="customizableProfile"
+                            description="Custom theme on your profile"
                         >
                             <input
                                 {...register('customizableProfile')}
@@ -294,12 +298,6 @@ const MultiStepForm = () => {
                                 onChange={(e) => {
                                     onChangeAddons(e, 'customizableProfile');
                                 }}
-                            />
-                            <AddOnsPara
-                                isToggledYearly={isToggledYearly}
-                                htmlFor="Customizable profile"
-                                addOn="customizableProfile"
-                                description="Custom theme on your profile"
                             />
                         </StepThreeRow>
                     </FormSection>

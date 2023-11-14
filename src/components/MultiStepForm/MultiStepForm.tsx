@@ -23,6 +23,9 @@ const stepOneBaseInputStyles =
 const stepOneInputErrorOutlineStyle =
     'focus:outline-primary-strawberry-red border-primary-strawberry-red';
 
+const stepTwoBaseInputStyles =
+    'absolute left-0 top-0 h-full w-full opacity-0 hover:cursor-pointer';
+
 const stepThreeBaseInputStyles =
     'form-checkbox self-center text-primary-purplish-blue focus:ring-0 h-5 w-5 rounded-md';
 
@@ -163,95 +166,97 @@ const MultiStepForm = () => {
 
                     <FormSection
                         key={STEPS.TWO}
-                        classes="space-y-3"
+                        classes="space-y-3 md:space-y-5"
                         formStep={STEPS.TWO}
                     >
                         <FormSectionHeader
                             title="Select your plan"
                             description="You have the option of monthly or yearly billing."
                         />
-                        <StepTwoRow
-                            isToggledYearly={isToggledYearly}
-                            selectedPlan={selectedPlan}
-                            imageSrc="/icon-arcade.svg"
-                            alt="Arcade plan icon"
-                            id="arcade"
-                        >
-                            <label
-                                htmlFor="arcade"
-                                className="font-bold text-primary-marine-blue"
-                            >
-                                Arcade
-                            </label>
-                            <PriceTierPara
+                        <div className="space-y-3 md:grid md:grid-cols-3 md:gap-3 md:space-y-0">
+                            <StepTwoRow
                                 isToggledYearly={isToggledYearly}
-                                plan="arcade"
-                            />
-                            <input
-                                {...register('plan')}
-                                className=" absolute left-0 top-0 h-full w-full opacity-0 "
-                                type="radio"
-                                name="plan"
+                                selectedPlan={selectedPlan}
+                                imageSrc="/icon-arcade.svg"
+                                alt="Arcade plan icon"
                                 id="arcade"
-                                value="arcade"
-                                onChange={onChangePlan}
-                                defaultChecked={!selectedPlan}
-                            />
-                        </StepTwoRow>
-                        <StepTwoRow
-                            isToggledYearly={isToggledYearly}
-                            selectedPlan={selectedPlan}
-                            imageSrc="/icon-advanced.svg"
-                            alt="Advanced plan icon"
-                            id="advanced"
-                        >
-                            <label
-                                htmlFor="advanced"
-                                className="font-bold text-primary-marine-blue"
                             >
-                                Advanced
-                            </label>
-                            <PriceTierPara
+                                <label
+                                    htmlFor="arcade"
+                                    className="font-bold text-primary-marine-blue"
+                                >
+                                    Arcade
+                                </label>
+                                <PriceTierPara
+                                    isToggledYearly={isToggledYearly}
+                                    plan="arcade"
+                                />
+                                <input
+                                    {...register('plan')}
+                                    className={stepTwoBaseInputStyles}
+                                    type="radio"
+                                    name="plan"
+                                    id="arcade"
+                                    value="arcade"
+                                    onChange={onChangePlan}
+                                    defaultChecked={!selectedPlan}
+                                />
+                            </StepTwoRow>
+                            <StepTwoRow
                                 isToggledYearly={isToggledYearly}
-                                plan="advanced"
-                            />
-                            <input
-                                {...register('plan')}
-                                className="absolute left-0 top-0 h-full w-full opacity-0 "
-                                type="radio"
-                                name="plan"
+                                selectedPlan={selectedPlan}
+                                imageSrc="/icon-advanced.svg"
+                                alt="Advanced plan icon"
                                 id="advanced"
-                                value="advanced"
-                                onChange={onChangePlan}
-                            />
-                        </StepTwoRow>
-                        <StepTwoRow
-                            isToggledYearly={isToggledYearly}
-                            selectedPlan={selectedPlan}
-                            imageSrc="/icon-pro.svg"
-                            alt="Prop plan icon"
-                            id="pro"
-                        >
-                            <label
-                                htmlFor="pro"
-                                className="font-bold text-primary-marine-blue"
                             >
-                                Pro
-                            </label>
-                            <PriceTierPara
+                                <label
+                                    htmlFor="advanced"
+                                    className="font-bold text-primary-marine-blue"
+                                >
+                                    Advanced
+                                </label>
+                                <PriceTierPara
+                                    isToggledYearly={isToggledYearly}
+                                    plan="advanced"
+                                />
+                                <input
+                                    {...register('plan')}
+                                    className={stepTwoBaseInputStyles}
+                                    type="radio"
+                                    name="plan"
+                                    id="advanced"
+                                    value="advanced"
+                                    onChange={onChangePlan}
+                                />
+                            </StepTwoRow>
+                            <StepTwoRow
                                 isToggledYearly={isToggledYearly}
-                                plan="pro"
-                            />
-                            <input
-                                {...register('plan')}
-                                className="absolute left-0 top-0 h-full w-full opacity-0 "
-                                type="radio"
-                                name="plan"
+                                selectedPlan={selectedPlan}
+                                imageSrc="/icon-pro.svg"
+                                alt="Prop plan icon"
                                 id="pro"
-                                value="pro"
-                                onChange={onChangePlan}
-                            />
-                        </StepTwoRow>
+                            >
+                                <label
+                                    htmlFor="pro"
+                                    className="font-bold text-primary-marine-blue"
+                                >
+                                    Pro
+                                </label>
+                                <PriceTierPara
+                                    isToggledYearly={isToggledYearly}
+                                    plan="pro"
+                                />
+                                <input
+                                    {...register('plan')}
+                                    className={stepTwoBaseInputStyles}
+                                    type="radio"
+                                    name="plan"
+                                    id="pro"
+                                    value="pro"
+                                    onChange={onChangePlan}
+                                />
+                            </StepTwoRow>
+                        </div>
                         <ToggleSwitch>
                             {/* https://flowbite.com/docs/forms/toggle/ */}
                             <span

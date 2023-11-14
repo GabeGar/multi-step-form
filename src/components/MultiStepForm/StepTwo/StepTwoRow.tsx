@@ -1,4 +1,5 @@
-const stepTwoBaseStyles = 'relative flex gap-3 rounded-lg border p-4';
+const stepTwoBaseStyles =
+    'relative flex gap-3 rounded-lg border p-4 md:flex-col md:gap-6 md:pr-12 md:py-6 transition-all hover:border-primary-purplish-blue';
 
 interface Props {
     id: string;
@@ -30,7 +31,9 @@ const StepTwoRow = ({
             >
                 {imageSrc && (
                     <img
-                        className={isToggledYearly ? 'self-start' : ''}
+                        className={`${
+                            isToggledYearly ? 'self-start' : ''
+                        } md:self-start`}
                         src={imageSrc}
                         alt={alt}
                     />

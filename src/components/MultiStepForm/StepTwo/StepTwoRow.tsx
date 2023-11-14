@@ -1,8 +1,12 @@
+import { Plans } from '../../../shared/types';
+import { capitalize } from '../../../utils/capitalize';
+import PriceTierPara from './PriceTierPara';
+
 const stepTwoBaseStyles =
     'relative flex gap-3 rounded-lg border p-4 md:flex-col md:gap-6 md:pr-12 md:py-6 transition-all hover:border-primary-purplish-blue';
 
 interface Props {
-    id: string;
+    id: keyof Plans;
     imageSrc: string;
     alt: string;
     selectedPlan: string;
@@ -18,6 +22,7 @@ const StepTwoRow = ({
     alt,
     children,
 }: Props) => {
+    const displayName = capitalize(id);
     const isSelected = id === selectedPlan;
 
     return (
@@ -38,7 +43,19 @@ const StepTwoRow = ({
                         alt={alt}
                     />
                 )}
-                <div>{children}</div>
+                <div>
+                    <label
+                        htmlFor="arcade"
+                        className="font-bold text-primary-marine-blue"
+                    >
+                        {displayName}
+                    </label>
+                    <PriceTierPara
+                        isToggledYearly={isToggledYearly}
+                        plan={id}
+                    />
+                    {children}
+                </div>
             </div>
         </>
     );

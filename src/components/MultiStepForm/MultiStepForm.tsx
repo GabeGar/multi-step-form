@@ -181,16 +181,6 @@ const MultiStepForm = () => {
                                 alt="Arcade plan icon"
                                 id="arcade"
                             >
-                                <label
-                                    htmlFor="arcade"
-                                    className="font-bold text-primary-marine-blue"
-                                >
-                                    Arcade
-                                </label>
-                                <PriceTierPara
-                                    isToggledYearly={isToggledYearly}
-                                    plan="arcade"
-                                />
                                 <input
                                     {...register('plan')}
                                     className={stepTwoBaseInputStyles}
@@ -209,16 +199,6 @@ const MultiStepForm = () => {
                                 alt="Advanced plan icon"
                                 id="advanced"
                             >
-                                <label
-                                    htmlFor="advanced"
-                                    className="font-bold text-primary-marine-blue"
-                                >
-                                    Advanced
-                                </label>
-                                <PriceTierPara
-                                    isToggledYearly={isToggledYearly}
-                                    plan="advanced"
-                                />
                                 <input
                                     {...register('plan')}
                                     className={stepTwoBaseInputStyles}
@@ -236,16 +216,6 @@ const MultiStepForm = () => {
                                 alt="Prop plan icon"
                                 id="pro"
                             >
-                                <label
-                                    htmlFor="pro"
-                                    className="font-bold text-primary-marine-blue"
-                                >
-                                    Pro
-                                </label>
-                                <PriceTierPara
-                                    isToggledYearly={isToggledYearly}
-                                    plan="pro"
-                                />
                                 <input
                                     {...register('plan')}
                                     className={stepTwoBaseInputStyles}

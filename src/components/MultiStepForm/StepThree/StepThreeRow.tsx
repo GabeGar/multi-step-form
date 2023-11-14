@@ -3,7 +3,7 @@ import AddOnsPara from './AddOnsPara';
 
 const stepThreeBaseStyles = 'flex gap-3 rounded-lg border p-4';
 
-interface StepThreeRowProps {
+interface Props {
     isToggledYearly: boolean;
     isAddOnSelected: boolean;
     htmlFor: string;
@@ -12,11 +12,7 @@ interface StepThreeRowProps {
     children: React.ReactNode;
 }
 
-const StepThreeRow = ({
-    isAddOnSelected,
-    children,
-    ...props
-}: StepThreeRowProps) => {
+const StepThreeRow = ({ isAddOnSelected, children, ...props }: Props) => {
     return (
         <div
             className={`${stepThreeBaseStyles} ${

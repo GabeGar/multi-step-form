@@ -257,36 +257,14 @@ const MultiStepForm = () => {
                                 />
                             </StepTwoRow>
                         </div>
-                        <ToggleSwitch>
-                            {/* https://flowbite.com/docs/forms/toggle/ */}
-                            <span
-                                className={`${
-                                    !isToggledYearly
-                                        ? 'text-primary-marine-blue'
-                                        : 'text-neutral-cool-gray'
-                                } font-bold`}
-                            >
-                                Monthly
-                            </span>
-                            <label className="relative cursor-pointer self-center">
-                                <input
-                                    {...register('yearly')}
-                                    className="peer sr-only"
-                                    name="toggle"
-                                    type="checkbox"
-                                    onChange={onToggleYearly}
-                                />
-                                <div className="peer h-6 w-11 rounded-full bg-primary-marine-blue after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border  after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary-marine-blue peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full"></div>
-                            </label>
-                            <span
-                                className={`${
-                                    isToggledYearly
-                                        ? 'text-primary-marine-blue'
-                                        : 'text-neutral-cool-gray'
-                                } font-bold`}
-                            >
-                                Yearly
-                            </span>
+                        <ToggleSwitch isToggledYearly={isToggledYearly}>
+                            <input
+                                {...register('yearly')}
+                                className="peer sr-only"
+                                name="toggle"
+                                type="checkbox"
+                                onChange={onToggleYearly}
+                            />
                         </ToggleSwitch>
                     </FormSection>
 

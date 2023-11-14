@@ -31,7 +31,7 @@ export default {
                 sans: ['Ubuntu', ...defaultTheme.fontFamily.sans],
             },
             gridTemplateColumns: {
-                desktopGrid: '1fr 2.5fr',
+                desktopGrid: '1.1fr 2.5fr',
             },
         },
     },

@@ -5,7 +5,7 @@ const prevBtnClasses =
     'mt-auto rounded-md py-3 text-neutral-alabaster font-semibold';
 
 const nextBtnClasses =
-    'mt-auto rounded-md py-3 px-4 text-neutral-alabaster font-semibold';
+    'mt-auto rounded-md py-3 px-4 text-neutral-alabaster font-semibold transition-all md:px-5';
 
 const MultiStepFormActions = () => {
     const { step, decreaseStep, complete } = useMultiStep();
@@ -14,7 +14,7 @@ const MultiStepFormActions = () => {
 
     return (
         <div
-            className={`mt-auto flex w-full bg-neutral-white px-5 py-3 ${
+            className={`mt-auto flex w-full bg-neutral-white px-5 py-3 md:mt-16 md:p-0 ${
                 complete ? 'pointer-events-none opacity-0' : ''
             }`}
         >
@@ -33,7 +33,7 @@ const MultiStepFormActions = () => {
                 className={`${nextBtnClasses} ${
                     finalStep
                         ? 'bg-primary-purplish-blue'
-                        : 'bg-primary-marine-blue'
+                        : 'bg-primary-marine-blue hover:bg-primary-marine-blue/90'
                 } ml-auto`}
             >
                 {finalStep ? 'Confirm' : 'Next Step'}

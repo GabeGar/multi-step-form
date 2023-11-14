@@ -18,9 +18,10 @@ import MultiStepFormActions from '../MultiStepFormActions/MultiStepFormActions';
 import { useMQuery } from '../../context/MediaQueryContext';
 
 const stepOneBaseInputStyles =
-    'rounded-[.25rem] border border-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue';
+    'rounded-[.25rem] border border-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue md:rounded-lg';
 
-const stepOneInputErrorOutlineStyle = 'focus:outline-primary-strawberry-red';
+const stepOneInputErrorOutlineStyle =
+    'focus:outline-primary-strawberry-red border-primary-strawberry-red';
 
 const stepThreeBaseInputStyles =
     'form-checkbox self-center text-primary-purplish-blue focus:ring-0 h-5 w-5 rounded-md';

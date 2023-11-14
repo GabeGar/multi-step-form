@@ -1,7 +1,8 @@
 import { AddOns } from '../../../shared/types';
 import AddOnsPara from './AddOnsPara';
 
-const stepThreeBaseStyles = 'flex gap-3 rounded-lg border p-4';
+const stepThreeBaseStyles =
+    'flex gap-3 rounded-lg border p-4 transition-all hover:border-primary-purplish-blue hover:cursor-pointer';
 
 interface Props {
     isToggledYearly: boolean;

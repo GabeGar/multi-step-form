@@ -1,8 +1,10 @@
 import { motion as m } from 'framer-motion';
 import { useMultiStep } from '../../context/MultiStepContext';
 import { STEPS } from '../../shared/constants';
+import { useMQuery } from '../../context/MediaQueryContext';
 
-const baseClasses = 'px-3 py-1 border rounded-full md:mt-5';
+const baseClasses =
+    'px-3 py-1 border rounded-full first-of-type:md:mt-8 md:ml-8 md:relative';
 const activeClass = 'bg-primary-light-blue';
 
 const stepIndicatorState = {
@@ -10,11 +12,14 @@ const stepIndicatorState = {
     active: `${baseClasses} ${activeClass}`,
 };
 
+const stepDescriptions = ['Your Info', 'Select Plan', 'Add-Ons', 'Summary'];
+
 const MultiStepIndicator = () => {
+    const { isDesktop } = useMQuery();
     const { step } = useMultiStep();
 
     return (
-        <section className="mt-10 flex gap-3 md:mt-0 md:h-full md:flex-col md:items-center md:bg-sideBarDesktop md:bg-cover md:bg-center md:bg-no-repeat">
+        <section className="mt-10 flex gap-3 md:mt-0 md:h-full md:flex-col md:items-start md:space-y-4 md:rounded-lg md:bg-sideBarDesktop md:bg-cover md:bg-center md:bg-no-repeat">
             {Array.from({ length: STEPS.FOUR }).map((_, i) => (
                 <m.div
                     key={i}
@@ -39,10 +44,23 @@ const MultiStepIndicator = () => {
                     className={
                         step === i
                             ? `${stepIndicatorState.active}`
-                            : `${stepIndicatorState.inactive}`
+                            : `${stepIndicatorState.inactive} text-neutral-alabaster`
                     }
                 >
                     {i + 1}
+                    {isDesktop && (
+                        <>
+                            <div className="absolute left-12 top-0">
+                                <h5 className="flex gap-1 text-[0.7rem] uppercase text-neutral-cool-gray">
+                                    <span>Step</span>
+                                    <span>{i + 1}</span>
+                                </h5>
+                                <p className="min-w-max text-sm font-bold uppercase tracking-widest text-neutral-alabaster">
+                                    {stepDescriptions[i]}
+                                </p>
+                            </div>
+                        </>
+                    )}
                 </m.div>
             ))}
         </section>

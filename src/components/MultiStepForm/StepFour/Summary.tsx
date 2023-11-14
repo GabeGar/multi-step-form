@@ -5,6 +5,7 @@ import { capitalize } from '../../../utils/capitalize';
 import { getDisplayName } from '../../../utils/getDisplayName';
 
 interface Props {
+    onToggleYearly: () => void;
     selectedPlan: keyof Plans;
     isToggledYearly: boolean;
     wantsOnlineService: boolean;
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const Summary = ({
+    onToggleYearly,
     selectedPlan,
     isToggledYearly,
     wantsOnlineService,
@@ -48,7 +50,13 @@ const Summary = ({
                     {currentPlanCapitalized} ({planTimeSpanText})
                 </h2>
                 <p className="flex justify-between">
-                    <button type="button" className="underline">
+                    <button
+                        type="button"
+                        className="underline"
+                        onClick={() => {
+                            onToggleYearly();
+                        }}
+                    >
                         Change
                     </button>
                     <span className="font-bold text-primary-marine-blue">
@@ -80,7 +88,9 @@ const Summary = ({
                             return (
                                 <li key={addOn}>
                                     <p className="flex justify-between text-primary-marine-blue">
-                                        <span>{displayName}</span>
+                                        <span className="text-neutral-cool-gray">
+                                            {displayName}
+                                        </span>
                                         <span>
                                             +${currentAddonPrice}/
                                             {planAddonTotalTimeSpanText}

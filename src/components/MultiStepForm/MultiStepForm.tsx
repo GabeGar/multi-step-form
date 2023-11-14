@@ -53,8 +53,8 @@ const MultiStepForm = () => {
         setValue('plan', e.target.value);
     };
 
-    const onToggleYearly = (e: ChangeEventInputElement) => {
-        setValue('yearly', e.target.checked);
+    const onToggleYearly = () => {
+        setValue('yearly', !isToggledYearly);
     };
 
     const onChangeAddons = (
@@ -355,6 +355,7 @@ const MultiStepForm = () => {
                     description="Double-check everything looks OK before confirming."
                 />
                 <Summary
+                    onToggleYearly={onToggleYearly}
                     selectedPlan={selectedPlan}
                     isToggledYearly={isToggledYearly}
                     wantsOnlineService={wantsOnlineService}

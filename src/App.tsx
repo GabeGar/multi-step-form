@@ -10,7 +10,7 @@ const App = () => {
     return (
         <AnimatePresence>
             <div className="min-h-[100dvh] bg-primary-light-blue/40 md:grid md:items-center md:justify-center">
-                <div className="md:grid-cols-desktopGrid flex min-h-[100dvh] flex-col items-center justify-center gap-6 bg-sideBarMobile bg-contain bg-no-repeat md:grid  md:min-h-0 md:rounded-lg md:bg-white md:bg-none md:p-3">
+                <div className="flex min-h-[100dvh] flex-col items-center justify-center gap-6 bg-sideBarMobile bg-contain bg-no-repeat md:grid md:min-h-0  md:grid-cols-desktopGrid md:rounded-xl md:bg-white md:bg-none md:p-3">
                     <MultiStepIndicator />
                     <MultiStepForm />
                     {!isDesktop && <MultiStepFormActions />}

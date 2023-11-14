@@ -30,6 +30,9 @@ export default {
             fontFamily: {
                 sans: ['Ubuntu', ...defaultTheme.fontFamily.sans],
             },
+            gridTemplateColumns: {
+                desktopGrid: '1fr 2.5fr',
+            },
         },
     },
     plugins: [

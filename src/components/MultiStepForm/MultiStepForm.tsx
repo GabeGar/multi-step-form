@@ -14,6 +14,8 @@ import StepThreeRow from './StepThree/StepThreeRow';
 import AddOnsPara from './StepThree/AddOnsPara';
 import Summary from './StepFour/Summary';
 import Confirmation from '../ui/Confirmation';
+import MultiStepFormActions from '../MultiStepFormActions/MultiStepFormActions';
+import { useMQuery } from '../../context/MediaQueryContext';
 
 const stepOneBaseInputStyles =
     'rounded-[.25rem] border border-neutral-light-gray px-4 py-3 font-bold focus:outline focus:outline-primary-purplish-blue';
@@ -26,6 +28,7 @@ const stepThreeBaseInputStyles =
 type ChangeEventInputElement = React.ChangeEvent<HTMLInputElement>;
 
 const MultiStepForm = () => {
+    const { isDesktop } = useMQuery();
     const { step, increaseStep, complete, onComplete } = useMultiStep();
 
     const { register, formState, handleSubmit, setValue, watch } =
@@ -366,6 +369,7 @@ const MultiStepForm = () => {
                             wantsCustomizableProfile={wantsCustomizableProfile}
                         />
                     </FormSection>
+                    {isDesktop && <MultiStepFormActions />}
                 </>
             ) : (
                 <Confirmation />

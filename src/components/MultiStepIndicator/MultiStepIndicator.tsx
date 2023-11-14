@@ -2,7 +2,7 @@ import { motion as m } from 'framer-motion';
 import { useMultiStep } from '../../context/MultiStepContext';
 import { STEPS } from '../../shared/constants';
 
-const baseClasses = 'px-3 py-1 border rounded-full';
+const baseClasses = 'px-3 py-1 border rounded-full md:mt-5';
 const activeClass = 'bg-primary-light-blue';
 
 const stepIndicatorState = {
@@ -14,7 +14,7 @@ const MultiStepIndicator = () => {
     const { step } = useMultiStep();
 
     return (
-        <section className="mt-10 flex gap-3">
+        <section className="mt-10 flex gap-3 md:mt-0 md:h-full md:flex-col md:items-center md:bg-sideBarDesktop md:bg-cover md:bg-center md:bg-no-repeat">
             {Array.from({ length: STEPS.FOUR }).map((_, i) => (
                 <m.div
                     key={i}

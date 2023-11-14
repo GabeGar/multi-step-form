@@ -296,7 +296,7 @@ const MultiStepForm = () => {
 
                     <FormSection
                         key={STEPS.FOUR}
-                        classes="space-y-3"
+                        classes="space-y-3 md:space-y-9"
                         formStep={STEPS.FOUR}
                     >
                         <FormSectionHeader

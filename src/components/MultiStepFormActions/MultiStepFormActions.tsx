@@ -32,7 +32,7 @@ const MultiStepFormActions = () => {
                 form="multiStep"
                 className={`${nextBtnClasses} ${
                     finalStep
-                        ? 'bg-primary-purplish-blue'
+                        ? 'bg-primary-purplish-blue hover:bg-primary-purplish-blue/80'
                         : 'bg-primary-marine-blue hover:bg-primary-marine-blue/90'
                 } ml-auto`}
             >

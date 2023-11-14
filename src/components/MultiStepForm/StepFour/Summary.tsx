@@ -45,14 +45,14 @@ const Summary = ({
 
     return (
         <>
-            <div className=" rounded-lg bg-primary-light-blue/20 px-4 py-5 text-neutral-cool-gray">
+            <div className="rounded-lg bg-primary-light-blue/20 px-4 py-5 text-neutral-cool-gray">
                 <h2 className="font-bold text-primary-marine-blue">
                     {currentPlanCapitalized} ({planTimeSpanText})
                 </h2>
                 <p className="flex justify-between">
                     <button
                         type="button"
-                        className="underline"
+                        className="underline transition-all hover:text-primary-purplish-blue/80"
                         onClick={() => {
                             onToggleYearly();
                         }}
@@ -107,7 +107,7 @@ const Summary = ({
                 <span className="text-neutral-cool-gray">
                     Total (per {totalTimeSpanText})
                 </span>
-                <span className="font-bold text-primary-purplish-blue">
+                <span className="font-bold text-primary-purplish-blue md:text-xl">
                     +${total}/{planAddonTotalTimeSpanText}
                 </span>
             </div>

@@ -11,7 +11,6 @@ import FormSectionHeader from './FormSectionHeader';
 import StepTwoRow from './StepTwo/StepTwoRow';
 import ToggleSwitch from './StepTwo/ToggleSwitch';
 import StepThreeRow from './StepThree/StepThreeRow';
-import AddOnsPara from './StepThree/AddOnsPara';
 import Summary from './StepFour/Summary';
 import Confirmation from '../ui/Confirmation';
 import MultiStepFormActions from '../MultiStepFormActions/MultiStepFormActions';
@@ -33,7 +32,6 @@ type ChangeEventInputElement = React.ChangeEvent<HTMLInputElement>;
 const MultiStepForm = () => {
     const { isDesktop } = useMQuery();
     const { step, increaseStep, complete, onComplete } = useMultiStep();
-
     const { register, formState, handleSubmit, setValue, watch } =
         useForm<Inputs>();
 
@@ -57,11 +55,8 @@ const MultiStepForm = () => {
         setValue('yearly', !isToggledYearly);
     };
 
-    const onChangeAddons = (
-        e: ChangeEventInputElement,
-        checkBoxName: keyof Inputs,
-    ) => {
-        setValue(checkBoxName, e.target.checked);
+    const onChangeAddons = (checkBoxName: keyof Inputs, value: boolean) => {
+        setValue(checkBoxName, value);
     };
 
     const onSubmit: SubmitHandler<Inputs> = () => {
@@ -252,6 +247,7 @@ const MultiStepForm = () => {
                             htmlFor="Online service"
                             addOn="onlineService"
                             description="Access to multiplayer games"
+                            onChangeAddons={onChangeAddons}
                         >
                             <input
                                 {...register('onlineService')}
@@ -259,17 +255,16 @@ const MultiStepForm = () => {
                                 type="checkbox"
                                 id="Online service"
                                 name="onlineService"
-                                onChange={(e) => {
-                                    onChangeAddons(e, 'onlineService');
-                                }}
+                                checked={wantsOnlineService}
                             />
                         </StepThreeRow>
                         <StepThreeRow
+                            onChangeAddons={onChangeAddons}
                             isToggledYearly={isToggledYearly}
+                            isAddOnSelected={wantsLargeStorage}
                             htmlFor="Large storage"
                             addOn="largeStorage"
                             description="Extra 1TB of cloud save"
-                            isAddOnSelected={wantsLargeStorage}
                         >
                             <input
                                 {...register('largeStorage')}
@@ -277,12 +272,11 @@ const MultiStepForm = () => {
                                 type="checkbox"
                                 id="Large storage"
                                 name="largeStorage"
-                                onChange={(e) => {
-                                    onChangeAddons(e, 'largeStorage');
-                                }}
+                                checked={wantsLargeStorage}
                             />
                         </StepThreeRow>
                         <StepThreeRow
+                            onChangeAddons={onChangeAddons}
                             isAddOnSelected={wantsCustomizableProfile}
                             isToggledYearly={isToggledYearly}
                             htmlFor="Customizable profile"
@@ -295,9 +289,7 @@ const MultiStepForm = () => {
                                 type="checkbox"
                                 id="Customizable profile"
                                 name="customizableProfile"
-                                onChange={(e) => {
-                                    onChangeAddons(e, 'customizableProfile');
-                                }}
+                                checked={wantsCustomizableProfile}
                             />
                         </StepThreeRow>
                     </FormSection>

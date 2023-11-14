@@ -24,7 +24,7 @@ const AddOnsPara = ({
         <div className="flex flex-1 items-center">
             <div className="flex-1">
                 <label
-                    className="font-bold text-primary-marine-blue"
+                    className="font-bold text-primary-marine-blue hover:cursor-pointer"
                     htmlFor={htmlFor}
                 >
                     {htmlFor}

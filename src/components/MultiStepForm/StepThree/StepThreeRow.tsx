@@ -11,9 +11,29 @@ interface Props {
     addOn: keyof AddOns;
     description: string;
     children: React.ReactNode;
+    onChangeAddons: (addOn: keyof AddOns, value: boolean) => void;
 }
 
-const StepThreeRow = ({ isAddOnSelected, children, ...props }: Props) => {
+const StepThreeRow = ({
+    isAddOnSelected,
+    children,
+    addOn,
+    onChangeAddons,
+    ...props
+}: Props) => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        const isCheckBoxClick = (e.target as HTMLElement).tagName === 'INPUT';
+
+        if (isCheckBoxClick) {
+            // If the click was on the checkbox, trigger onChangeAddons directly and return immediately, to prevent the subsequent re-call in the handler.
+            onChangeAddons(addOn, !isAddOnSelected);
+            return;
+        }
+        // A click on the label will trigger the onChange, on the input element, by default (via the id and htmlFor linkage). Thus, e.preventDefault().
+        e.preventDefault();
+        onChangeAddons(addOn, !isAddOnSelected);
+    };
+
     return (
         <div
             className={`${stepThreeBaseStyles} ${
@@ -21,9 +41,10 @@ const StepThreeRow = ({ isAddOnSelected, children, ...props }: Props) => {
                     ? 'border-primary-purplish-blue bg-primary-pastel-blue/20'
                     : 'border-neutral-light-gray'
             }`}
+            onClick={handleClick}
         >
             {children}
-            <AddOnsPara {...props} />
+            <AddOnsPara addOn={addOn} {...props} />
         </div>
     );
 };

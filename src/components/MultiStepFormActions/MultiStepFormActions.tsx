@@ -20,6 +20,7 @@ const MultiStepFormActions = () => {
         >
             {!firstStep && (
                 <button
+                    type="button"
                     className={`${prevBtnClasses} text-neutral-cool-gray`}
                     onClick={decreaseStep}
                 >

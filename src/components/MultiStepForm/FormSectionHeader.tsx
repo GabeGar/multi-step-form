@@ -6,9 +6,9 @@ interface Props {
 const FormSectionHeader = ({ title, description }: Props) => {
     return (
         <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold text-primary-marine-blue">
+            <h1 className="text-2xl font-bold text-primary-marine-blue">
                 {title}
-            </h2>
+            </h1>
             <p className="text-neutral-cool-gray">{description}</p>
         </div>
     );

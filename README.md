@@ -31,9 +31,9 @@ Users should be able to:
 
 ### Screenshot
 
-![Desktop]<img src="/screenshots/desktop.png" alt="Desktop view" width="400" height="400">
+<img src="/screenshots/desktop.png" alt="Desktop view">
 
-![Mobile]<img src="/screenshots/mobile.png" alt="Desktop view" width="250" height="400">
+<img src="/screenshots/mobile.png" alt="Mobile view" width="300" height="500">
 
 ### Links
 
